@@ -15,4 +15,17 @@ class TableTest {
 
         table.getBill();
     }
+
+    @Test
+    void testTableEmptyAfterPayment() {
+        Table table = TableRepository.tables().get(0);
+        table.addOrder(MenuRepository.menus().get(0), 1);
+
+        assertEquals(false, table.isEmpty());
+        assertEquals(MenuRepository.menus().get(0).getPrice(), table.getOrderAmount());
+
+        table.makeTableEmpty();
+        assertEquals(true, table.isEmpty());
+        assertEquals(0, table.getOrderAmount());
+    }
 }
