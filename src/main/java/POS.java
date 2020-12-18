@@ -1,3 +1,5 @@
+import controller.OrderController;
+import controller.PaymentController;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -5,17 +7,24 @@ import view.OutputView;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class POS {
     private boolean isAppEnd = false;
+    private final OrderController orderController;
+    private final PaymentController paymentController;
 
-    public POS(){ }
-
-    public void run(){
+    public POS() {
         List<Table> tables = TableRepository.tables();
-        do{
+        orderController = new OrderController(tables);
+        paymentController = new PaymentController(tables);
+    }
+
+    public void run() {
+        do {
             printMainMenu();
-            // TODO :: 선택 입력
+            Menu selected = selectMenu();
+            doNext(selected);
         } while (!isAppEnd);
     }
 
@@ -29,6 +38,26 @@ public class POS {
     private Menu selectMenu() {
         String userInput = InputView.getMainMenu();
         return Menu.getSelectedMenu(userInput);
+    }
+
+    private void doNext(Menu menu) {
+        if (menu == Menu.ORDER) {
+            orderController.order();
+            return;
+        }
+
+        if (menu == Menu.PAY) {
+            paymentController.pay();
+            return;
+        }
+
+        if (menu == Menu.EXIT) {
+            setAppEnd();
+        }
+    }
+
+    private void setAppEnd() {
+        isAppEnd = true;
     }
 
     private enum Menu {
