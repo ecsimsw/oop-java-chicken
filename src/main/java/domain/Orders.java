@@ -32,10 +32,11 @@ public class Orders {
     }
 
     public int getNumberOfCategory(Category category) {
-        return (int) orders.keySet()
+        return orders.keySet()
                 .stream()
                 .filter(menu -> menu.isInCategory(category))
-                .count();
+                .mapToInt(menu -> orders.get(menu))
+                .sum();
     }
 
     @Override

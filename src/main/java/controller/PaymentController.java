@@ -60,7 +60,7 @@ public class PaymentController {
     private void discountByCategory(Table table) {
         int ordered = table.getOrderQuantityInCategory(DISCOUNT_CATEGORY);
         int satisfactionCount = ordered / NUMBER_OF_ORDER_CONDITIONS;
-        totalPrice -= satisfactionCount * MONEY_OF_DISCOUNT_BY_CATEGORY;
+        totalPrice -= (satisfactionCount * MONEY_OF_DISCOUNT_BY_CATEGORY);
     }
 
     private void discountByPaymentMethod() {
