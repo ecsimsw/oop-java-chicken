@@ -24,6 +24,8 @@ public class OrderController {
         printMenuList();
         Menu menu = selectMenu();
         int quantity = getQuantity();
+
+        table.addOrder(menu, quantity);
     }
 
     private Table selectTable() {
