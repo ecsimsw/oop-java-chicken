@@ -31,6 +31,13 @@ public class Orders {
         return String.format(BILL_FORMAT, name, count, price);
     }
 
+    public int getNumberOfCategory(Category category) {
+        return (int) orders.keySet()
+                .stream()
+                .filter(menu -> menu.isInCategory(category))
+                .count();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

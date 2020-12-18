@@ -1,9 +1,16 @@
 package view;
 
+import domain.PaymentMethod;
+
 import java.util.Scanner;
 
 public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
+
+    public static PaymentMethod getPaymentMethod() {
+        System.out.println("## 신용카드는 1번, 현금은 2번");
+        return PaymentMethod.getSelectedMethod(getInput());
+    }
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");

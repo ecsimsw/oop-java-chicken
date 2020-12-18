@@ -17,6 +17,10 @@ public class Menu {
         return this.number == number;
     }
 
+    public boolean isInCategory(Category category) {
+        return this.category == category;
+    }
+
     public String getName() {
         return name;
     }

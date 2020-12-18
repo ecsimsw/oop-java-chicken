@@ -34,6 +34,14 @@ public class Table {
         orders = null;
     }
 
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public int getOrderQuantityInCategory(Category category) {
+        return orders.getNumberOfCategory(category);
+    }
+
     public String getBill() {
         return orders.toString();
     }

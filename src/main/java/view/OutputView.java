@@ -10,6 +10,16 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String EMPTY_BOTTOM_LINE = "└ ─ ┘";
     private static final String USED_BOTTOM_LINE = "└ # ┘";
+    private static final String PAYMENT_PROGRESS_MESSAGE = "## %s번 테이블의 결제를 진행합니다.\n";
+
+    public static void printTotalPrice(int totalPrice) {
+        println("## 최종 결제할 금액");
+        println(totalPrice);
+    }
+
+    public static void noticePaymentProgress(int tableNumber) {
+        printf(PAYMENT_PROGRESS_MESSAGE, tableNumber);
+    }
 
     public static void printBill(String bill) {
         println("## 주문 내역");
@@ -58,7 +68,11 @@ public class OutputView {
         OutputView.print(USED_BOTTOM_LINE);
     }
 
-    public static void println(String msg) {
+    public static void printf(String msg, Object... args) {
+        System.out.printf(msg, args);
+    }
+
+    public static void println(Object msg) {
         System.out.println(msg);
     }
 
