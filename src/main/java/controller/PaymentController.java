@@ -66,7 +66,7 @@ public class PaymentController {
     private void discountByPaymentMethod() {
         PaymentMethod method = InputView.getPaymentMethod();
         if (method == DISCOUNT_PAYMENT_METHOD) {
-            totalPrice = (100 - DISCOUNT_RATE_BY_METHOD) * totalPrice;
+            totalPrice = (100 - DISCOUNT_RATE_BY_METHOD) * totalPrice / 100;
         }
     }
 }

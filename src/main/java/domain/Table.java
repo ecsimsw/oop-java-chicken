@@ -32,6 +32,7 @@ public class Table {
 
     public void makeTableEmpty() {
         orders = null;
+        orderAmount = 0;
     }
 
     public int getOrderAmount() {
