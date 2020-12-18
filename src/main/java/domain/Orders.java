@@ -26,7 +26,7 @@ public class Orders {
 
     private String makeOrderInfo(Menu menu) {
         String name = menu.getName();
-        int count = orders.get(name);
+        int count = orders.get(menu);
         int price = menu.getPrice();
         return String.format(BILL_FORMAT, name, count, price);
     }
