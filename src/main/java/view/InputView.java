@@ -15,6 +15,20 @@ public class InputView {
         return getInput();
     }
 
+    public static int getFoodMenu() {
+        OutputView.println("##등록할 메뉴를 선택하세요.");
+        return getInteger();
+    }
+
+    public static int getQuantity() {
+        OutputView.println("##메뉴의 수량을 입력하세요.");
+        return getInteger();
+    }
+
+    public static int getInteger() {
+        return scanner.nextInt();
+    }
+
     public static String getInput() {
         return scanner.nextLine();
     }

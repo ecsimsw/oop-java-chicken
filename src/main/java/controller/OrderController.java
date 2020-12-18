@@ -20,10 +20,28 @@ public class OrderController {
     public void order() {
         OutputView.printTables(tables);
         Table table = selectTable();
+
+        printMenuList();
+        Menu menu = selectMenu();
+        int quantity = getQuantity();
     }
 
     private Table selectTable() {
         int tableNum = InputView.inputTableNumber();
         return TableRepository.getTableByNumber(tableNum);
+    }
+
+    private void printMenuList() {
+        List menus = MenuRepository.menus();
+        OutputView.printMenus(menus);
+    }
+
+    private Menu selectMenu() {
+        int menuNum = InputView.getFoodMenu();
+        return MenuRepository.getMenuByNumber(menuNum);
+    }
+
+    private int getQuantity() {
+        return InputView.getQuantity();
     }
 }
