@@ -15,7 +15,7 @@ public class Table {
     }
 
     public void addOrder(Menu menu, int count) {
-        if (!isEmpty()) {
+        if (orders == null) {
             orders = new Orders();
         }
         updateOrderAmount(menu, count);
