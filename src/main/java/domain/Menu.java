@@ -30,6 +30,15 @@ public class Menu {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o instanceof Menu) {
+            return ((Menu) o).name.equals(this.name);
+        }
+
+        return false;
+    }
+
+    @Override
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
