@@ -4,6 +4,7 @@ import domain.Category;
 import domain.PaymentMethod;
 import domain.Table;
 import domain.TableRepository;
+import domain.validator.PaymentValidator;
 import view.InputView;
 import view.OutputView;
 
@@ -36,14 +37,15 @@ public class PaymentController {
     }
 
     private Table selectTableToPay() {
-        int tableNum = InputView.inputTableNumber();
-        Table table = TableRepository.getTableByNumber(tableNum);
-
-        if (table.isEmpty()) {
-            throw new IllegalArgumentException("빈 테이블 입니다.");
+        try {
+            int tableNum = InputView.inputTableNumber();
+            Table table = TableRepository.getTableByNumber(tableNum);
+            PaymentValidator.checkTableIsUsed(table);
+            return table;
+        } catch (Exception e) {
+            OutputView.printErrorMessage(e);
+            return selectTableToPay();
         }
-
-        return table;
     }
 
     private void printOrderList(Table table) {

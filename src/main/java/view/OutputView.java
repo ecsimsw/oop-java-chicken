@@ -11,6 +11,11 @@ public class OutputView {
     private static final String EMPTY_BOTTOM_LINE = "└ ─ ┘";
     private static final String USED_BOTTOM_LINE = "└ # ┘";
     private static final String PAYMENT_PROGRESS_MESSAGE = "## %s번 테이블의 결제를 진행합니다.\n";
+    private static final String ERROR_MESSAGE = "[Error] %s \n";
+
+    public static void printErrorMessage(Exception e) {
+        printf(ERROR_MESSAGE, e.getMessage());
+    }
 
     public static void printTotalPrice(int totalPrice) {
         println("## 최종 결제할 금액");

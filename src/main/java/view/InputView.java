@@ -8,13 +8,18 @@ public class InputView {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static PaymentMethod getPaymentMethod() {
-        System.out.println("## 신용카드는 1번, 현금은 2번");
-        return PaymentMethod.getSelectedMethod(getInput());
+        try {
+            System.out.println("## 신용카드는 1번, 현금은 2번");
+            return PaymentMethod.getSelectedMethod(getInput());
+        } catch (Exception e) {
+            OutputView.printErrorMessage(e);
+            return getPaymentMethod();
+        }
     }
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        return getInteger();
     }
 
     public static String getMainMenu() {
@@ -32,8 +37,21 @@ public class InputView {
         return getInteger();
     }
 
-    public static int getInteger() {
-        return scanner.nextInt();
+    private static int getInteger() {
+        try {
+            return parseInt(getInput());
+        } catch (Exception e) {
+            OutputView.printErrorMessage(e);
+            return getInteger();
+        }
+    }
+
+    private static int parseInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("정수를 입력하세요");
+        }
     }
 
     public static String getInput() {

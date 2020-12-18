@@ -36,8 +36,13 @@ public class POS {
     }
 
     private Menu selectMenu() {
-        String userInput = InputView.getMainMenu();
-        return Menu.getSelectedMenu(userInput);
+        try {
+            String userInput = InputView.getMainMenu();
+            return Menu.getSelectedMenu(userInput);
+        } catch (Exception e) {
+            OutputView.printErrorMessage(e);
+            return selectMenu();
+        }
     }
 
     private void doNext(Menu menu) {
