@@ -34,6 +34,10 @@ public class Table {
         orders = null;
     }
 
+    public String getBill() {
+        return orders.toString();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

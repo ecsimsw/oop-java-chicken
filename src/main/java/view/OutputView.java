@@ -11,6 +11,12 @@ public class OutputView {
     private static final String EMPTY_BOTTOM_LINE = "└ ─ ┘";
     private static final String USED_BOTTOM_LINE = "└ # ┘";
 
+    public static void printBill(String bill) {
+        println("## 주문 내역");
+        println("메뉴 수량 금액");
+        print(bill);
+    }
+
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
             System.out.println(menu);

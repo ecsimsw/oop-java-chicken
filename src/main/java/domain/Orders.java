@@ -1,9 +1,13 @@
 package domain;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Orders {
+    private static final String BILL_FORMAT = "%s %s %s\n";
+
     private final Map<Menu, Integer> orders;
 
     public Orders() {
@@ -18,5 +22,21 @@ public class Orders {
         }
 
         orders.replace(menu, existingOrderQuantity + count);
+    }
+
+    private String makeOrderInfo(Menu menu) {
+        String name = menu.getName();
+        int count = orders.get(name);
+        int price = menu.getPrice();
+        return String.format(BILL_FORMAT, name, count, price);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Menu menu : orders.keySet()) {
+            sb.append(makeOrderInfo(menu));
+        }
+        return sb.toString();
     }
 }
