@@ -37,4 +37,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void println(String msg){
+        System.out.println(msg);
+    }
 }
