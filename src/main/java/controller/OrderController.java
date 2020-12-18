@@ -9,7 +9,6 @@ import view.InputView;
 import view.OutputView;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class OrderController {
     private final List<Table> tables;

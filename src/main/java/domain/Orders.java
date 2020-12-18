@@ -1,9 +1,7 @@
 package domain;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class Orders {
     private static final String BILL_FORMAT = "%s %s %s\n";
