@@ -12,6 +12,7 @@ public class OutputView {
     private static final String USED_BOTTOM_LINE = "└ # ┘";
     private static final String PAYMENT_PROGRESS_MESSAGE = "## %s번 테이블의 결제를 진행합니다.\n";
     private static final String ERROR_MESSAGE = "[Error] %s \n";
+    private static final String SEPARATOR_LINE = "\n";
 
     public static void printErrorMessage(Exception e) {
         printf(ERROR_MESSAGE, e.getMessage());
@@ -34,8 +35,9 @@ public class OutputView {
 
     public static void printMenus(final List<Menu> menus) {
         for (final Menu menu : menus) {
-            System.out.println(menu);
+            println(menu);
         }
+        OutputView.print(SEPARATOR_LINE);
     }
 
     public static void printTables(final List<Table> tables) {
@@ -43,20 +45,21 @@ public class OutputView {
         printTop(tables.size());
         printTableNumbers(tables);
         printBottom(tables);
+        OutputView.print(SEPARATOR_LINE);
     }
 
     private static void printTop(final int count) {
         for (int i = 0; i < count; i++) {
             print(TOP_LINE);
         }
-        System.out.println();
+        OutputView.print(SEPARATOR_LINE);
     }
 
     private static void printTableNumbers(final List<Table> tables) {
         for (final Table table : tables) {
-            System.out.printf(TABLE_FORMAT, table);
+            printf(TABLE_FORMAT, table);
         }
-        System.out.println();
+        OutputView.print(SEPARATOR_LINE);
     }
 
     private static void printBottom(List<Table> tables) {
