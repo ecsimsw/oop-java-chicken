@@ -29,6 +29,8 @@ public class PaymentController {
         Table table = selectTableToPay();
 
         printOrderList(table);
+
+        OutputView.noticePaymentProgress(table.getNumber());
         totalPrice = table.getOrderAmount();
         discount(table);
         OutputView.printTotalPrice(totalPrice);

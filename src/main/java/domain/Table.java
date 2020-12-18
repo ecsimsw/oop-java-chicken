@@ -47,6 +47,10 @@ public class Table {
         return orders.toString();
     }
 
+    public int getNumber() {
+        return number;
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);
