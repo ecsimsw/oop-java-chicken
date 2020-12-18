@@ -4,7 +4,6 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
-import jdk.internal.util.xml.impl.Input;
 import view.InputView;
 import view.OutputView;
 
